@@ -12,11 +12,12 @@
         a{text-decoration: none; color: #000;display: block;}
         .first-menu{display: flex; justify-content: space-between; width: 1000px;}
         .second-menu{display: none;}
-        .slider{position: relative; overflow: hidden; width: 300px;height: 350px; margin: 0 auto;}
-        .slider li{width: 300px;height: 300px; position: absolute;}
-        .bg01{background-color: red;left: 0;}
-        .bg02{background-color: blue;left: 100%;}
-        .bg03{background-color: darkblue;left: 100%;}
+        .slider{position: relative; overflow: hidden; width: 1000px;height: 350px; margin: 0 auto;}
+        .slider li{width: 1000px;height: 300px; position: absolute;}
+        .slider li a{position: absolute;top: 50%; left:50%; transform: translate(-50%,-50%); border: 5px dashed #fff; display: block; padding: 20px; font-size: 35px;}
+        .bg01{left: 0; background-image: url(./images/img1.jpg);background-repeat:no-repeat; background-size: 1000px 300px;}
+        .bg02{left: 100%; background-image: url(./images/img2.jpg);background-repeat:no-repeat; background-size: 1000px 300px;}
+        .bg03{left: 100%; background-image: url(./images/img3.jpg);background-repeat:no-repeat; background-size: 1000px 300px;}
         .pop{position: absolute;top: 0;left: 0;width: 100%;height:100%;background-color: rgba(0, 0, 0, .6); display: none;}
         .pop-box{width: 500px;height: 500px; position: absolute; top: 50%;left: 50%; transform: translate(-50%,-50%); background-color: #fff;}
         .on{background-color: green;}
@@ -96,9 +97,9 @@
             <hr>
             <h2 class="pop-up">슬라이드이미지 클릭하면 팝업창</h2>
             <ul class="slider">
-                <li class="bg01"></li>
-                <li class="bg02"></li>
-                <li class="bg03"></li>
+                <li class="bg01"><a href="#">슬라이드1</a></li>
+                <li class="bg02"><a href="#">슬라이드2</a></li>
+                <li class="bg03"><a href="#">슬라이드3</a></li>
             </ul>
         </section>
         <section>
