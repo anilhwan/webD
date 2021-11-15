@@ -5,8 +5,129 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>타이틀 제목</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        ul{text-align: center;}
+        li{list-style: none; width: 200px;}
+        a{text-decoration: none; color: #000;display: block;}
+        .first-menu{display: flex; justify-content: space-between; width: 1000px;}
+        .second-menu{display: none;}
+        .slider{position: relative; overflow: hidden; width: 300px;height: 350px; margin: 0 auto;}
+        .slider li{width: 300px;height: 300px; position: absolute;}
+        .bg01{background-color: red;left: 0;}
+        .bg02{background-color: blue;left: 100%;}
+        .bg03{background-color: darkblue;left: 100%;}
+        .pop{position: absolute;top: 0;left: 0;width: 100%;height:100%;background-color: rgba(0, 0, 0, .6); display: none;}
+        .pop-box{width: 500px;height: 500px; position: absolute; top: 50%;left: 50%; transform: translate(-50%,-50%); background-color: #fff;}
+        .on{background-color: green;}
+        .tab-menu{display: flex;}
+        .tab-contents{position: relative;top: 0;left: 0;}
+        .menu-2{display: none;}
+    </style>
+    <script src="js/jquery-1.12.3.js"></script>
+    <script>
+        $(function(){
+            $('.first-menu li').hover(function(){
+                $(this).find('ul').stop().slideDown();
+            },function(){
+                $(this).find('ul').stop().slideUp();
+            })
+            var slider = $('.slider li');
+            var current =0;
+            setInterval(function(){
+                var prev = slider.eq(current);
+                move(prev,0,'100%')
+                current++;
+                if (current == slider.size()) { current=0;}
+                var next = slider.eq(current);
+                move(next,'-100%',0)
+            },2000);
+            function move(a,b,c){
+                a.css({left:b}).stop().animate({left:c})
+            }
+            $('.pop-up').click(function(){
+                $('.pop').fadeIn()
+            })
+            $('.close-btn').click(function(){
+                $('.pop').fadeOut()
+            })
+            var tabMenu = $('.tab-menu li')
+            var con = $('.tab-contents>div')
+            tabMenu.click(function(){
+                var tg =$(this)
+                var i = tg.index();
+                tabMenu.removeClass('on')
+                tg.addClass('on')
+                con.css({display:'none'})
+                con.eq(i).css({display:'block'})
+            })
+        })
+    </script>
 </head>
 <body>
-    
+    <div id="wrap">
+        <header>
+            <h1>로고자리</h1>
+            <nav style="height: 200px;">
+                <p>슬라이드메뉴</p>
+                <ul class="first-menu">
+                    <li><a href="#">안일환</a>
+                        <ul class="second-menu">
+                            <li><a href="#">안일환1</a></li>
+                            <li><a href="#">안일환1</a></li>
+                            <li><a href="#">안일환1</a></li>
+                            <li><a href="#">안일환1</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">안일환</a></li>
+                    <li><a href="#">안일환</a></li>
+                    <li><a href="#">안일환</a>
+                        <ul class="second-menu">
+                            <li><a href="#">안일환2</a></li>
+                            <li><a href="#">안일환2</a></li>
+                            <li><a href="#">안일환2</a></li>
+                            <li><a href="#">안일환2</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <section>
+            <hr>
+            <h2 class="pop-up">슬라이드이미지 클릭하면 팝업창</h2>
+            <ul class="slider">
+                <li class="bg01"></li>
+                <li class="bg02"></li>
+                <li class="bg03"></li>
+            </ul>
+        </section>
+        <section>
+            <hr>
+            <h2>탭메뉴</h2>
+            <ul class="tab-menu">
+                <li class="on"><a href="#">메뉴1</a></li>
+                <li><a href="#">메뉴2</a></li>
+            </ul>
+            <div class="tab-contents">
+                <div class="menu-1">
+                    <ul>
+                        <li>안녕메뉴1</li>
+                    </ul>
+                </div>
+                <div class="menu-2">
+                    <ul>
+                        <li>안녕메뉴2</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <footer></footer>
+    </div>
+    <div class="pop">
+        <div class="pop-box">
+            <h2>dasdasdkasdasdasd</h2>
+            <button type="button" class="close-btn">닫기</button>
+        </div>
+    </div>
 </body>
 </html>
