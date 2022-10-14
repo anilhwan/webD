@@ -11,6 +11,19 @@
     <script src="js/script.js"></script>`
 </head>
 <body>
-<h1>트위터</h1>
-</body>
+<script>
+    var settings = {
+  "url": "https://api.twitter.com/2/users/770878842214883328/tweets?tweet.fields=created_at",
+  "method": "GET",
+  "timeout": 0,
+  "headers": {
+    "Authorization": "OAuth oauth_consumer_key=\"U1DBbqfzCu9NHKJvqJMBmdtus\",oauth_token=\"1579752074107293696-sN2PkenMAKA4BXa6kDxwjyBjHeGkwO\",oauth_signature_method=\"HMAC-SHA1\",oauth_timestamp=\"1665733748\",oauth_nonce=\"0ePeB0LdfLO\",oauth_version=\"1.0\",oauth_signature=\"CYiwMLoeU2BFhM69WGlsnXc%2FUrc%3D\"",
+    "Cookie": "ct0=b08a242faa397d3e0ee2859ce064c064; guest_id=v1%3A166572319832152340"
+  },
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+</script></body>
 </html>
